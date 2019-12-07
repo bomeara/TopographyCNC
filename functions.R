@@ -54,7 +54,7 @@ PreviewArea <- function(bbox=GetBBox()) {
     )
 }
 
-GetArea <- function(bbox=GetBBox(), major_dim=500) {
+GetArea <- function(bbox=GetBBox(), major_dim=1000) {
   elev_file <- file.path(tempdir(), "elevation.tif")
   image_size <- define_image_size(bbox, major_dim = major_dim)
   get_usgs_elevation_data(bbox, size = image_size$size, file = elev_file,
@@ -67,7 +67,7 @@ GetArea <- function(bbox=GetBBox(), major_dim=500) {
   return(elev_matrix)
 }
 
-SaveArea <- function(elev_matrix=GetArea(), stl_file="cnc.stl", zscale=50, unit="in", maxwidth=4) {
+SaveArea <- function(elev_matrix=GetArea(), stl_file="cnc.stl", zscale=50, unit="mm", maxwidth=150) {
   elev_matrix %>%
     sphere_shade() %>%
     plot_3d(elev_matrix,zscale=zscale)

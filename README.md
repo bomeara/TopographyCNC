@@ -10,4 +10,14 @@ To pick an area, you need to get the latitude and longitude of the bounding box 
 
 You can preview them with `PreviewArea(bbox)`.
 
-To save the STL in the local directory: `SaveArea(GetArea(bbox))`. If you want to make higher relative elevation, play with zscale; its default is 50. `SaveArea(GetArea(bbox), zscale=200)` for example
+To save the STL in the local directory: `SaveArea(GetArea(bbox))`. If you want to make higher relative elevation, play with zscale; its default is 50, and lower numbers mean more relief. `SaveArea(GetArea(bbox), zscale=10)` for example
+
+For example, for Oak Ridge
+
+```
+bbox <- GetBBox(-84.277817,35.977303,-84.116009,36.075146)
+PreviewArea(bbox)
+SaveArea(GetArea(bbox), stl_file="or.stl", zscale=20)
+```
+
+You may want to use slicer to convert the stl file to svg
